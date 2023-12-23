@@ -1,0 +1,16 @@
+{% include 'header.html' %}
+
+
+<h1>{{ product.name }}</h1>
+<p>Price: ${{ product.price }}</p>
+<p>Quantity Available: {{ product.quantity }}</p>
+
+<form method="post" action="">
+    {% csrf_token %}
+    <input type="submit" value="Add to Cart">
+</form>
+
+
+
+
+{% include 'footer.html' %}

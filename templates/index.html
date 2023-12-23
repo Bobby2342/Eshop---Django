@@ -1,0 +1,76 @@
+{% include "header.html" %}
+{%load static%}
+
+
+
+
+  <body bis_status="ok" bis_frame_id="30">
+
+    <nav class="site-header sticky-top py-1">
+      <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <a class="py-2" href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+        </a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Tour</a>
+        <a class="py-2 d-none d-md-inline-block" href="/products">Product</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Features</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Enterprise</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Support</a>
+        <a class="py-2 d-none d-md-inline-block" href="#">Pricing</a>
+        <a class="py-2 d-none d-md-inline-block" href="/cart">Cart</a>
+      </div>
+    </nav>
+
+
+
+    
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+        <div class="col-md-5 p-lg-5 mx-auto my-5">
+          <h1 class="display-4 font-weight-normal">Eshop Nepal</h1>
+          <p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple's marketing pages.</p>
+          <a class="btn btn-outline-secondary" href="#">Become a Happy Customer</a>
+        </div>
+        <div class="product-device box-shadow d-none d-md-block"></div>
+        <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+      </div>
+
+      <div class="container mb-4">
+        Recent Products
+        <div class="row">
+            {% for product in products%}
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-4 ">
+                <div class="card shadow">
+                    <div class="card-body text-center">
+                        <h3 class="text-warning">SALE 50% OFF</h3>
+                        <a href="#">
+                            <img class="card-img-top" src="{{product.imgurl}}" alt="" style ="height:200px  ">
+                        </a>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a class="text-reset" href="#"><h3 class="card-title display-4">{{product.name}}</h3></a>
+                        <h6>Rs {{product.price}} <p  class="text ml-2">{{product.condition}} </p></h6>
+                        <form method="post" action="">
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-dark" value="Add to Cart">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {%endfor %}
+
+        </div>
+  
+            
+          
+        </div>
+    </div>
+
+
+
+
+{% include "footer.html"%}

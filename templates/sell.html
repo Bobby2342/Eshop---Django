@@ -1,0 +1,75 @@
+{% include 'header.html' %}
+
+
+<div class ="container">
+    <form  action ="" method="post" class="form-horizontal" enctype="multipart/form-data">
+        <fieldset>
+        {% csrf_token %}
+        <!-- Form Name -->
+        <legend>Sell Your Products</legend>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="text">Product Name</label>  
+          <div class="col-md-4">
+          <input id="text" name="name" type="text" placeholder="username" class="form-control input-md" required="">
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="email">Description</label>  
+          <div class="col-md-4">
+          <input id="" name="description" type="text" placeholder="" class="form-control input-md" required="">
+          </div>
+        </div>
+        
+        <!-- Password input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="passwordinput">Price </label>
+          <div class="col-md-4">
+            <input id="price" name="price" type="text" placeholder="price" class="form-control input-md" required="">
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="passwordinput">Upload Image </label>
+            <div class="col-md-4">
+              <input id="img" name="img" type="file" placeholder="price" class="form-control input-md" >
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="passwordinput">Image Address </label>
+            <div class="col-md-4">
+              <input id="text" name="imgurl" type="text" placeholder="image address" class="form-control input-md" required="">
+            </div>
+          </div>
+        <!-- Password input-->
+    
+          
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="passwordinput">Condition </label>
+          <div class="col-md-4">
+            <input id="text" name="condition" type="text" placeholder="condition of the material" class="form-control input-md" required="">
+          </div>
+        </div>
+
+      
+    
+     
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="submit">Sell Now</label>
+          <div class="col-md-4">
+            <button id="submit" name="submit" class="btn btn-primary">Add</button>
+          </div>
+        </div>
+        
+        </fieldset>
+        </form>
+    </div>
+
+
+
+{% include 'footer.html'%}
+
