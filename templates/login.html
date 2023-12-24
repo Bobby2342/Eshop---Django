@@ -1,34 +1,43 @@
 {% include 'header.html' %}
-{%load static%}
 
-<div class ="container">
-<div class="wrapper fadeInDown">
-    <div id="formContent">
-      <!-- Tabs Titles -->
-  
-      <!-- Icon -->
-      <div class="fadeIn first">
-        <img src="" id="icon" alt="User Icon" />
-        <h1>Login</h1>
+  <body>
+    <div class ="container mt-5">
+    <form  action="{% url 'loginuser' %}" method="POST" class="form-signin">
+
+      {% csrf_token %}
+      <div class="text-center mb-4">
+        <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
+        <p>Build form controls with floating labels via the <code>:placeholder-shown</code> pseudo-element. <a href="https://caniuse.com/#feat=css-placeholder-shown">Works in latest Chrome, Safari, and Firefox.</a></p>
       </div>
-  
-      <!-- Login Form -->
-      <form>
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="username">
-        <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-        <input type="submit" class="fadeIn fourth" value="Log In">
-      </form>
-  
-      <!-- Remind Passowrd -->
-      <div id="formFooter">
-        <a class="underlineHover" href="/signup">Create Account</a>
+      {% if error_message %}
+      <p class="error-message">{{ error_message }}</p>
+      {% endif %}
+
+      <div class="form-label-group">
+        <label for="inputEmail">Email address</label>
+        <input type="email" id="email" name= "email" class="form-control" placeholder="Email address" required autofocus>
+       
       </div>
+
+      <div class="form-label-group">
+        <label for="inputPassword">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+        
+      </div>
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
+      <P> <a href="/signup">Signup Now </a></p>
+    </form>
   
-    </div>
   </div>
-</div>
+ {% include 'footer.html' %}
+    
 
-
-
-
-{% include 'footer.html' %}
+  

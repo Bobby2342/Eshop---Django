@@ -25,12 +25,34 @@ from app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/',views.index, name='index'),
-        path('login/',views.login, name='login'),
+        path('login/',views.loginuser, name='loginuser'),
+            path('logout/', views.logoutuser, name='logoutuser'),
+            path('header/', views.logoption, name='logoption'),
+
+
             path('signup/',views.signup, name='signup'),
-                        path('sell/',views.sell, name='sell'),
-                            path('cart/',views.cart, name='cart'),
-                                path('product_details/<int:pk>/', views.product_details, name='product_details'),
-                                                              path('products/',views.product_list, name='products'),
+                path('sell/',views.sell, name='sell'),
+                     path('cart/',views.cart, name='cart'),
+                      path('product_details/<int:pk>/', views.product_details, name='product_details'),
+                     path('products/',views.product_list, name='products'),
+        path('laptops/', views.laptops, name='laptops'),
+        path('mobiles/', views.mobiles, name='mobiles'),
+        path('shoes/', views.shoes, name='shoes'),
+         path('instruments/', views.instruments, name='instruments'),
+        path('checkout/', views.checkout, name='checkout'),
+         path('contact/', views.contact, name='contact'),
+        path('add_to_cart/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
+        path('remove_from_cart/<int:product_id>/', views.remove_from_cart, name='remove_from_cart'),
+
+        
+
+
+        
+
+
+
+
+
 
 
 

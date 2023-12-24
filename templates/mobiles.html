@@ -1,0 +1,37 @@
+{% include 'header.html' %}
+
+
+
+<div class="container mb-4">
+    Products
+   <div class="row">
+       {% for mobile in mobiles%}
+       <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-4 ">
+           <div class="card shadow">
+               <div class="card-body text-center">
+                   <h3 class="text-warning">SALE 50% OFF</h3>
+                   <a href="#">
+                       <img class="card-img-top" src="{{mobile.imgurl}}" alt="" style ="height:200px  ">
+                   </a>
+                   <div class="text-warning">
+                       <i class="fas fa-star"></i>
+                       <i class="fas fa-star"></i>
+                       <i class="fas fa-star"></i>
+                       <i class="fas fa-star"></i>
+                       <i class="far fa-star"></i>
+                   </div>
+                   <a class="text-reset" href="#"><h3 class="card-title display-4">{{mobile.name}}</h3></a>
+                   <h6>Rs {{mobile.price}} <p  class="text ml-2">{{mobile.condition}} </p></h6>
+                   <button><a class="btn btn-dark" href="{% url 'product_details' pk=mobile.pk %}">View Now</a></button>
+                </div>
+           </div>
+       </div>
+
+   
+       {%endfor %}
+
+   </div>
+
+
+
+ {% include 'footer.html' %}

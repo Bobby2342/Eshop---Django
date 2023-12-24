@@ -121,7 +121,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS =[
 
 
-    os.path.join(BASE_DIR,'static')
+    os.path.join(BASE_DIR,'static/')
 ]
 
 
@@ -135,4 +135,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR , 'media')
+
+
+#email integration
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587  # For TLS encryption
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = 'bgoogly0@gmail.com'  # Replace with your Gmail email
+EMAIL_HOST_PASSWORD = 'lcsw bvhs szbx aodu'  # Replace with your Gmail password
+
+
 
