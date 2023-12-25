@@ -1,5 +1,6 @@
 from social_django.utils import psa
-
+from django.shortcuts import render 
+from django.core.paginator import Paginator
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User 
 from django.contrib.auth.decorators import login_required
@@ -18,11 +19,18 @@ from app.mail import send_custom_email
 from app.models import Product, User
 
 # Create your views here.
+login_required
 def index(request):
     products = Product.objects.all()
 
-    return render (request, 'index.html', {'products':products})
+    paginator = Paginator(products , 3)
 
+    page_number = request.GET.get('page')
+
+    pageobj = paginator.get_page(page_number)
+
+    return render (request, 'index.html', {'products':products, 'pageobj':pageobj})
+login_required
 def loginuser(request):
  
     if request.method == 'POST':
@@ -45,9 +53,10 @@ def loginuser(request):
         return render(request, 'login.html')
     
 def logoutuser(request):
-    if request.user.is_authenticated:
-     logout(request)
-    return redirect('login')
+
+     if request.user.is_authenticated:
+        logout(request)
+     return redirect('loginuser')
 
 def logoption(request):
     user = request.user if request.user.is_authenticated else None
@@ -78,13 +87,13 @@ def signup(request):
 
 
     return render(request, 'signup.html')
-
+@login_required
 def cart(request):
 
     cart_items = request.session.get('cart', [])
     context = {'cart_items': cart_items}
     return render(request, 'cart.html', context)
-
+@login_required
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
 
@@ -106,7 +115,7 @@ def add_to_cart(request, product_id):
     # Pass cart_items to the template context
     return redirect('cart')
 
-
+@login_required
 def remove_from_cart(request, product_id):
      if request.method == 'POST':
         product_id = request.POST.get('item_id')  # Retrieve the product ID from the form
@@ -122,11 +131,18 @@ def remove_from_cart(request, product_id):
             
      return redirect('cart')  # Redirect back to the cart page or another appropriate page
 
+
+
 def product_list(request):
 
     products = Product.objects.all()
-    return render(request , 'product.html' ,{'products':products} )
+    paginator = Paginator(products, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request , 'product.html' ,{'products':products, 'page_obj':page_obj} )
 
+
+@login_required
 def sell(request):
 
     if request.method == 'POST':
@@ -232,3 +248,28 @@ def google_auth_callback(request):
 def facebook_callback(request):
   
     return redirect('home') 
+
+def search(request):
+
+    query = request.GET.get('q')
+    products = []
+
+    if query and len(query)>=1 :
+     print("Query:  ", query)
+     if len(query)==1:
+
+            products = Product.objects.filter(name__istartswith=query)
+            print("Number of Products Found:", products.count())  # Check the count of found products
+
+
+     products = Product.objects.filter(name__icontains=query)
+     paginator = Paginator(products, 5)
+     page_number = request.GET.get('page')
+     page_obj = paginator.get_page(page_number)
+     print("Number of Products Found:", products.count())  # Check the count of found products
+
+
+     return render(request, 'search.html',{'products':products, 'query':query , 'page_obj':page_obj})
+
+    else:
+        return render (request, "search.html" ,{'products':products, 'query':query , 'page_obj':page_obj})

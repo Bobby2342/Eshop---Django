@@ -1,0 +1,68 @@
+{% include 'header.html' %}
+
+
+
+
+   
+        <div class="container mb-4">
+            Products
+           <div class="row">
+               {% for product in page_obj%}
+               <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-4 ">
+                   <div class="card shadow">
+                       <div class="card-body text-center">
+                           <h3 class="text-warning">SALE 50% OFF</h3>
+                           <a href="#">
+                               <img class="card-img-top" src="{{product.imgurl}}" alt="" style ="height:200px  ">
+                           </a>
+                           <div class="text-warning">
+                               <i class="fas fa-star"></i>
+                               <i class="fas fa-star"></i>
+                               <i class="fas fa-star"></i>
+                               <i class="fas fa-star"></i>
+                               <i class="far fa-star"></i>
+                           </div>
+                           <a class="text-reset" href="#"><h3 class="card-title display-4">{{product.name}}</h3></a>
+                           <h6>Rs {{product.price}} <p  class="text ml-2">{{product.condition}} </p></h6>
+                           <button><a class="btn btn-dark" href="{% url 'product_details' pk=product.pk %}">View Now</a></button>
+                       </div>
+                   </div>
+               </div>
+       
+           
+               {%endfor %}
+       
+           </div>
+           <div class="pagination mt-4">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% include 'footer.html' %}

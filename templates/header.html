@@ -48,11 +48,11 @@
               </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/aboutus">
+            <a class="nav-link" href="/feed">
               <i class="fa fa-envelope-o">
                 <span class="badge badge-danger"></span>
               </i>
-              About Us
+             Feeds
             </a>
           </li>
           <li class="nav-item">
@@ -90,26 +90,38 @@
               Sell Products
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">
-              <i class="fa fa-globe">
-                <span class="badge badge-success"></span>
-              </i>
-              Login
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">
-              <i class="fa fa-globe">
-                <span class="badge badge-success"></span>
-              </i>
-              Logout
-            </a>
-          </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-globe">
+                            <span class="badge badge-success"></span>
+                        </i>
+                        {{ user.username }} 
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logoutuser' %}">
+                        <i class="fa fa-globe">
+                            <span class="badge badge-success"></span>
+                        </i>
+                        Logout
+                    </a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'loginuser' %}">
+                        <i class="fa fa-globe">
+                            <span class="badge badge-success"></span>
+                        </i>
+                        Login
+                    </a>
+                </li>
+            {% endif %}
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <form action ="{%  url 'search'  %}" method= 'GET' class="form-inline my-2 my-lg-0">
+     
+          <input type ="text" value="{{query}}" name="q"  class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0"  type="submit">Search</button>
         </form>
       </div>
     </nav>

@@ -163,3 +163,6 @@ LOGIN_REDIRECT_URL='/index'
 
 SOCIAL_AUTH_FACEBOOK_KEY = 'your-app-id'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'your-app-secret'
+
+LOGIN_URL = '/login'
+LOGOUT_REDIRECT_URL = '/login'
