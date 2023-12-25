@@ -1,7 +1,9 @@
+from social_django.utils import psa
+
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User 
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
+from django.contrib.auth import logout , login
 
 
 from django.contrib.auth.hashers import check_password  # Import the password checking method
@@ -218,3 +220,15 @@ def contact (request):
        
 
     return render ( request, 'contact.html')
+
+#google login
+
+def google_auth_callback(request):
+
+    return redirect('/index')
+
+#facebook login
+
+def facebook_callback(request):
+  
+    return redirect('home') 

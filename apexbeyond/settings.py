@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -150,3 +151,15 @@ EMAIL_HOST_PASSWORD = 'lcsw bvhs szbx aodu'  # Replace with your Gmail password
 
 
 
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '525058357835-scqikomo2d1h11nnhg3c8lnjsg8hmu77.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+LOGIN_REDIRECT_URL='/index'
+
+SOCIAL_AUTH_FACEBOOK_KEY = 'your-app-id'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'your-app-secret'

@@ -31,6 +31,11 @@
           <input type="checkbox" value="remember-me"> Remember me
         </label>
       </div>
+      <div class = "container ml-5">
+      <a href="{% url 'social:begin' 'google-oauth2' %}" ><img src="https://cdn3d.iconscout.com/3d/free/thumb/free-google-9185438-7516836.png" style="height:50px " class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt=""></a> &nbsp;
+      <a href="{% url 'social:begin' 'facebook' %}" ><img src="https://png.pngtree.com/png-clipart/20230401/original/pngtree-facebook-icon-png-image_9015416.png" style="height:50px " class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt=""></a>
+      </div>
+
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
       <P> <a href="/signup">Signup Now </a></p>

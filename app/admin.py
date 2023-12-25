@@ -7,3 +7,4 @@ admin.site.register(User)
 admin.site.register(Product)
 admin.site.register(Contact)
 admin.site.register(Cart)
+

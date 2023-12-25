@@ -54,7 +54,7 @@
                         </div>
                         <a class="text-reset" href="#"><h3 class="card-title display-4">{{product.name}}</h3></a>
                         <h6>Rs {{product.price}} <p  class="text ml-2">{{product.condition}} </p></h6>
-                        <form method="post" action="">
+                        <form method="post" action=" {% url 'product_details' pk=product.pk %} ">
                             {% csrf_token %}
                             <input type="submit" class="btn btn-dark" value="Add to Cart">
                         </form>

@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from django.conf.urls.static import static
 
 
@@ -44,8 +44,9 @@ urlpatterns = [
         path('add_to_cart/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
         path('remove_from_cart/<int:product_id>/', views.remove_from_cart, name='remove_from_cart'),
 
-        
+        #google signin
 
+        path('auth/', include('social_django.urls', namespace='social')),
 
         
 
