@@ -12,17 +12,11 @@
                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-4 ">
                    <div class="card shadow">
                        <div class="card-body text-center" style="height:50%">
-                           <h3 class="text-warning">SALE 50% OFF</h3>
+                           <h3 class="text-warning">Winter 50% OFF</h3>
                            <a href="#">
                                <img class="card-img-top" src="{{product.imgurl}}" alt="" style ="max-height:200px  ">
                            </a>
-                           <div class="text-warning">
-                               <i class="fas fa-star"></i>
-                               <i class="fas fa-star"></i>
-                               <i class="fas fa-star"></i>
-                               <i class="fas fa-star"></i>
-                               <i class="far fa-star"></i>
-                           </div>
+                        
                            <a class="text-reset" href="#"><h3 class="card-title display-4">{{product.name}}</h3></a>
                            <h6>Rs {{product.price}} <p  class="text ml-2">{{product.condition}} </p></h6>
                            <button><a class="btn btn-dark" href="{% url 'product_details' pk=product.pk %}">View Now</a></button>

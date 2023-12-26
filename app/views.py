@@ -1,3 +1,4 @@
+import requests
 from social_django.utils import psa
 from django.shortcuts import render 
 from django.core.paginator import Paginator
@@ -5,6 +6,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout , login
+import hashlib
+
 
 
 from django.contrib.auth.hashers import check_password  # Import the password checking method
@@ -30,7 +33,7 @@ def index(request):
     pageobj = paginator.get_page(page_number)
 
     return render (request, 'index.html', {'products':products, 'pageobj':pageobj})
-login_required
+
 def loginuser(request):
  
     if request.method == 'POST':
@@ -108,6 +111,7 @@ def add_to_cart(request, product_id):
             'name': product.name,
             'price': float(product.price),
             'quantity': 1,
+            'imgurl': product.imgurl,
         })
 
     request.session['cart'] = cart_items
@@ -273,3 +277,5 @@ def search(request):
 
     else:
         return render (request, "search.html" ,{'products':products, 'query':query , 'page_obj':page_obj})
+  
+        
